@@ -1,332 +1,288 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <meta name="description" content="Katlego Matlabe — Cybersecurity Analyst, GRC Practitioner, and IT Operations professional based in Pretoria, South Africa." />  
-  <title>Katlego Matlabe | Cybersecurity & Governance</title>  
-  <link rel="preconnect" href="https://fonts.googleapis.com">  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">  
-  <style>  
-    :root {  
-      --navy: #185FA5;  
-      --navy-dark: #124b82;  
-      --text: #334155;  
-      --text-dark: #0f172a;  
-      --muted: #64748b;  
-      --border: #e2e8f0;  
-      --bg: #ffffff;  
-      --bg-soft: #f8fafc;  
-      --card: #ffffff;  
-      --max-width: 1120px;  
-      --radius: 16px;  
-    }  
-    * { box-sizing: border-box; margin: 0; padding: 0; }  
-    html { scroll-behavior: smooth; }  
-    body { font-family: "Open Sans", Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.7; }  
-    h1, h2, h3, .logo, .eyebrow, .section-label { font-family: "Inter", Arial, sans-serif; }  
-    a { color: inherit; text-decoration: none; }  
-    img, svg { display: block; max-width: 100%; }  
-    .container { width: min(100% - 40px, var(--max-width)); margin: 0 auto; }  
-    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); }  
-    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }  
-    .logo { width: 46px; height: 46px; border: 2px solid var(--navy); color: var(--navy); display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; font-weight: 800; letter-spacing: -0.04em; }  
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; font-size: 0.94rem; font-weight: 700; color: var(--text-dark); }  
-    .nav-links a { transition: color 180ms ease; }  
-    .nav-links a:hover { color: var(--navy); }  
-    .button-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }  
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font-weight: 800; font-size: 0.95rem; border: 1px solid transparent; transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; }  
-    .btn:hover { transform: translateY(-1px); }  
-    .btn-primary { background: var(--navy); color: #ffffff; border-color: var(--navy); }  
-    .btn-primary:hover { background: var(--navy-dark); border-color: var(--navy-dark); }  
-    .btn-outline { background: #ffffff; color: var(--navy); border-color: var(--navy); }  
-    .btn-outline:hover { background: #f1f7fd; }  
-    .hero { padding: 96px 0 88px; border-bottom: 1px solid var(--border); }  
-    .hero-content { max-width: 880px; }  
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--navy); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }  
-    .eyebrow::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--navy); }  
-    .hero h1 { color: var(--text-dark); font-size: clamp(2.6rem, 6vw, 5.4rem); line-height: 0.98; letter-spacing: -0.07em; max-width: 980px; margin-bottom: 24px; }  
-    .hero-subheadline { font-size: clamp(1.05rem, 2vw, 1.28rem); max-width: 820px; color: var(--text); margin-bottom: 26px; }  
-    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }  
-    .pill { display: inline-flex; align-items: center; min-height: 34px; padding: 0 13px; border: 1px solid var(--border); border-radius: 999px; background: #ffffff; color: var(--text-dark); font-size: 0.86rem; font-weight: 700; }  
-    section { scroll-margin-top: 96px; }  
-    .section { padding: 86px 0; border-bottom: 1px solid var(--border); }  
-    .section-soft { background: var(--bg-soft); }  
-    .section-heading { margin-bottom: 34px; }  
-    .section-label-wrap { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }  
-    .section-label { color: var(--navy); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; white-space: nowrap; }  
-    .section-rule { width: 100%; height: 1px; background: var(--border); }  
-    .section-title { color: var(--text-dark); font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.045em; max-width: 760px; }  
-    .about-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 54px; align-items: start; }  
-    .about-copy { display: grid; gap: 22px; font-size: 1rem; }  
-    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }  
-    .info-card, .service-card, .project-card, .credential-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }  
-    .info-card { padding: 22px; min-height: 142px; }  
-    .info-label { color: var(--muted); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }  
-    .info-value { color: var(--text-dark); font-weight: 800; line-height: 1.45; }  
-    .info-value a { color: var(--navy); overflow-wrap: anywhere; }  
-    .info-value a:hover { text-decoration: underline; }  
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }  
-    .service-card { padding: 28px; }  
-    .service-card h3 { color: var(--text-dark); font-size: 1.15rem; letter-spacing: -0.025em; margin-bottom: 12px; }  
-    .service-card p { margin-bottom: 20px; }  
-    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }  
-    .tag { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background: #f1f5f9; color: var(--text-dark); font-size: 0.78rem; font-weight: 800; line-height: 1.2; }  
-    .portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }  
-    .project-card { padding: 26px; display: flex; flex-direction: column; min-height: 310px; }  
-    .project-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 12px; }  
-    .project-card h3 { color: var(--text-dark); font-size: 1.16rem; line-height: 1.25; letter-spacing: -0.025em; }  
-    .github-link { flex: 0 0 auto; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; color: var(--navy); transition: background 180ms ease, border-color 180ms ease; }  
-    .github-link:hover { background: #f1f7fd; border-color: var(--navy); }  
-    .project-card p { margin-bottom: 20px; }  
-    .project-card .tag-row { margin-top: auto; }  
-    .credentials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }  
-    .credential-card { padding: 22px; }  
-    .credential-card h3 { color: var(--text-dark); font-size: 1.02rem; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 8px; }  
-    .credential-card p { color: var(--muted); font-size: 0.93rem; font-weight: 700; line-height: 1.5; }  
-    .credential-secondary { margin-top: 16px; max-width: 420px; background: #f8fafc; }  
-    .contact-panel { background: #ffffff; border: 1px solid var(--border); border-radius: 24px; padding: clamp(28px, 5vw, 52px); }  
-    .contact-panel h2 { color: var(--text-dark); font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -0.055em; max-width: 780px; margin-bottom: 18px; }  
-    .contact-panel p { max-width: 720px; font-size: 1.04rem; margin-bottom: 28px; }  
-    .footer { border-top: 1px solid var(--border); padding: 26px 0; }  
-    .footer-content { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 0.92rem; font-weight: 700; }  
-    @media (max-width: 900px) {
-      .nav { min-height: auto; padding: 16px 0; align-items: flex-start; }
-      .nav-links { gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
-      .hero { padding: 74px 0 70px; }
-      .about-grid, .services-grid, .portfolio-grid, .credentials-grid { grid-template-columns: 1fr; }
-      .info-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-card { min-height: auto; }
-    }
-    @media (max-width: 620px) {
-      .container { width: min(100% - 28px, var(--max-width)); }
-      .nav { flex-direction: column; }
-      .nav-links { justify-content: flex-start; gap: 12px 18px; font-size: 0.88rem; }
-      .hero h1 { font-size: clamp(2.35rem, 14vw, 4rem); }
-      .section { padding: 68px 0; }
-      .info-grid { grid-template-columns: 1fr; }
-      .button-row { align-items: stretch; }
-      .btn { width: 100%; }
-      .footer-content { flex-direction: column; }
-    }
-  </style>  
-</head>  
-<body>  
-  <header class="site-header">  
-    <div class="container nav">  
-      <a href="#top" class="logo" aria-label="Katlego Matlabe home">KM</a>  
-      <nav aria-label="Primary navigation">  
-        <ul class="nav-links">  
-          <li><a href="#about">About</a></li>  
-          <li><a href="#what-i-do">What I Do</a></li>  
-          <li><a href="#portfolio">Portfolio</a></li>  
-          <li><a href="#credentials">Credentials</a></li>  
-          <li><a href="#contact">Contact</a></li>  
-        </ul>  
-      </nav>  
-    </div>  
-  </header>  
-  <main id="top">  
-    <section class="hero">  
-      <div class="container hero-content">  
-        <p class="eyebrow">Available for opportunities</p>  
-        <h1>Katlego Matlabe — Cybersecurity &amp; Governance</h1>  
-        <p class="hero-subheadline">Bridging governance thinking and technical execution — from policy frameworks and compliance to security operations and cloud infrastructure.</p>  
-        <div class="pill-row" aria-label="Professional focus tags">  
-          <span class="pill">SOC Analysis</span>  
-          <span class="pill">GRC</span>  
-          <span class="pill">IT Administration</span>  
-          <span class="pill">Pretoria ZA</span>  
-          <span class="pill">Remote-ready</span>  
-        </div>  
-        <div class="button-row">  
-          <a href="#portfolio" class="btn btn-primary">View My Work</a>  
-          <a href="#contact" class="btn btn-outline">Get In Touch</a>  
-        </div>  
-      </div>  
-    </section>  
-    <section id="about" class="section">  
-      <div class="container">  
-        <div class="section-heading">  
-          <div class="section-label-wrap">  
-            <p class="section-label">About</p>  
-            <div class="section-rule" aria-hidden="true"></div>  
-          </div>  
-        </div>  
-        <div class="about-grid">  
-          <div class="about-copy">  
-            <p>I hold a BA in Governance and Political Transformation and spent five years as an independent language consultant managing 5,680 unique clients across 11,263 sessions — work that trained me in systems thinking, stakeholder communication, and operating under audit-grade accountability.</p>  
-            <p>I'm now building a technical foundation to match that governance instinct. That means hands-on SOC lab work, GRC framework application, Azure fundamentals, and a growing portfolio of real artifacts — not just study notes.</p>  
-            <p>My target trajectory is SOC Analyst as an entry point, with a medium-term pivot toward GRC and Cloud Security. My governance background isn't a detour — it's a shortcut to understanding why security controls exist, not just how to implement them.</p>  
-          </div>  
-          <div class="info-grid">  
-            <article class="info-card">  
-              <p class="info-label">Background</p>  
-              <p class="info-value">BA Governance &amp; Political Transformation</p>  
-            </article>  
-            <article class="info-card">  
-              <p class="info-label">Current Focus</p>  
-              <p class="info-value">30-Day SOC Analyst Lab · AZ-104 · SC-200 · ISC2 CC</p>  
-            </article>  
-            <article class="info-card">  
-              <p class="info-label">GitHub</p>  
-              <p class="info-value"><a href="https://github.com/RreMatlabe" target="_blank" rel="noopener noreferrer">github.com/RreMatlabe</a></p>  
-            </article>  
-            <article class="info-card">  
-              <p class="info-label">Location</p>  
-              <p class="info-value">Pretoria, South Africa · Open to remote</p>  
-            </article>  
-          </div>  
-        </div>  
-      </div>  
-    </section>  
-    <section id="what-i-do" class="section section-soft">  
-      <div class="container">  
-        <div class="section-heading">  
-          <div class="section-label-wrap">  
-            <p class="section-label">What I Do</p>  
-            <div class="section-rule" aria-hidden="true"></div>  
-          </div>  
-        </div>  
-        <div class="services-grid">  
-          <article class="service-card">  
-            <h3>Security Operations</h3>  
-            <p>Log analysis, endpoint monitoring, and threat detection using industry-standard tooling and frameworks.</p>  
-            <div class="tag-row">  
-              <span class="tag">Sysmon</span>  
-              <span class="tag">MITRE ATT&amp;CK</span>  
-              <span class="tag">VirusTotal</span>  
-              <span class="tag">Event Log Analysis</span>  
-            </div>  
-          </article>  
-          <article class="service-card">  
-            <h3>GRC &amp; Governance</h3>  
-            <p>Risk framework application, compliance analysis, and policy documentation grounded in real governance experience.</p>  
-            <div class="tag-row">  
-              <span class="tag">NIST CSF 2.0</span>  
-              <span class="tag">CIA Triad</span>  
-              <span class="tag">Risk Registers</span>  
-              <span class="tag">Policy Writing</span>  
-            </div>  
-          </article>  
-          <article class="service-card">  
-            <h3>IT Administration</h3>  
-            <p>Cloud infrastructure, helpdesk support, and endpoint troubleshooting across Windows and Azure environments.</p>  
-            <div class="tag-row">  
-              <span class="tag">Azure AZ-900</span>  
-              <span class="tag">Jira</span>  
-              <span class="tag">Zendesk</span>  
-              <span class="tag">Windows 11</span>  
-            </div>  
-          </article>  
-        </div>  
-      </div>  
-    </section>  
-    <section id="portfolio" class="section">  
-      <div class="container">  
-        <div class="section-heading">  
-          <div class="section-label-wrap">  
-            <p class="section-label">Portfolio</p>  
-            <div class="section-rule" aria-hidden="true"></div>  
-          </div>  
-        </div>  
-        <div class="portfolio-grid">  
-          <article class="project-card">  
-            <div class="project-top">  
-              <h3>CISA KEV Daily Monitor</h3>  
-              <a class="github-link" href="https://github.com/RreMatlabe/Windows11-Analyst-Lab" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>  
-            </div>  
-            <p>Automated n8n workflow monitoring CISA's Known Exploited Vulnerabilities feed with daily alerting via Gmail SMTP. Aligned to NIST CSF 2.0 and CISA BOD 22-01.</p>  
-            <div class="tag-row"><span class="tag">n8n Automation</span><span class="tag">NIST CSF 2.0</span><span class="tag">CISA BOD 22-01</span></div>  
-          </article>  
-          <article class="project-card">  
-            <div class="project-top">  
-              <h3>30-Day SOC Analyst Lab</h3>  
-              <a class="github-link" href="https://github.com/RreMatlabe/Windows11-Analyst-Lab" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>  
-            </div>  
-            <p>Ongoing Tier 1 SOC analyst challenge with daily session logs committed to GitHub. Covers Sysmon event analysis, hash verification, MITRE ATT&amp;CK tagging, and an IOC SQLite database.</p>  
-            <div class="tag-row"><span class="tag">Sysmon</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">SQLite IOC DB</span></div>  
-          </article>  
-          <article class="project-card">  
-            <div class="project-top">  
-              <h3>Exploiting the Human Firewall</h3>  
-              <a class="github-link" href="https://github.com/RreMatlabe/Case-Study-Exploiting-the-Human-Firewall" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>  
-            </div>  
-            <p>Behavioral analysis of a real-world financial fraud operation framed as a supply chain attack. Maps a non-technical attack lifecycle from initial access via familial trust through to financial exfiltration.</p>  
-            <div class="tag-row"><span class="tag">Insider Threat</span><span class="tag">Social Engineering</span><span class="tag">Zero Trust</span></div>  
-          </article>  
-          <article class="project-card">  
-            <div class="project-top">  
-              <h3>The Commodification of South Africa's Immigration System</h3>  
-              <a class="github-link" href="https://github.com/RreMatlabe/Case-Study-The-Commodification-of-South-Africa-s-Immigration-System" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>  
-            </div>  
-            <p>Forensic GRC analysis of systemic corruption at the SA Department of Home Affairs, mapped to the CIA Triad and NIST CSF. Frames institutional policy failure as a Human Zero-Day Exploit.</p>  
-            <div class="tag-row"><span class="tag">GRC</span><span class="tag">CIA Triad</span><span class="tag">NIST CSF</span></div>  
-          </article>  
-          <article class="project-card">  
-            <div class="project-top">  
-              <h3>AI Governance Case Study</h3>  
-              <a class="github-link" href="https://github.com/RreMatlabe/AI-Governance-Case-Study" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>  
-            </div>  
-            <p>Synthetic Governance Protocol for autonomous agent ecosystems. Covers consensus hallucination, synthetic media fraud, and a 6-item risk register mapped to NIST SP 800-53 controls.</p>  
-            <div class="tag-row"><span class="tag">AI Governance</span><span class="tag">NIST SP 800-53</span><span class="tag">Risk Register</span></div>  
-          </article>  
-          <article class="project-card">  
-            <div class="project-top">  
-              <h3>Windows 11 Analyst Lab</h3>  
-              <a class="github-link" href="https://github.com/RreMatlabe/Windows11-Analyst-Lab" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>  
-            </div>  
-            <p>4-round VirtualBox deployment journal covering registry bypasses, diskpart GPT conversion, VDI scaling, and Sysmon v15.20 installation.</p>  
-            <div class="tag-row"><span class="tag">VirtualBox</span><span class="tag">Sysmon v15.20</span><span class="tag">Windows 11</span></div>  
-          </article>  
-        </div>  
-      </div>  
-    </section>  
-    <section id="credentials" class="section section-soft">  
-      <div class="container">  
-        <div class="section-heading">  
-          <div class="section-label-wrap">  
-            <p class="section-label">Credentials</p>  
-            <div class="section-rule" aria-hidden="true"></div>  
-          </div>  
-        </div>  
-        <div class="credentials-grid">  
-          <article class="credential-card"><h3>AI Skills Fest 2026</h3><p>Microsoft · Credly Verified · Issued 2026</p></article>  
-          <article class="credential-card"><h3>AZ-900</h3><p>Microsoft Azure Fundamentals · Certified</p></article>  
-          <article class="credential-card"><h3>NSE 1, 2 &amp; 3</h3><p>Fortinet · FortiGate 7.6 · Active · exp. May 2028</p></article>  
-          <article class="credential-card"><h3>Career Essentials in Cybersecurity</h3><p>Microsoft &amp; LinkedIn Learning · Apr 2026</p></article>  
-          <article class="credential-card"><h3>Jira Service Management</h3><p>Atlassian University · May 2026</p></article>  
-          <article class="credential-card"><h3>Computer Hardware Basics</h3><p>Cisco Networking Academy · Jul 2025</p></article>  
-        </div>  
-        <article class="credential-card credential-secondary"><h3>Google Cybersecurity</h3><p>Google · Coursera · In progress · 4/8 modules</p></article>  
-      </div>  
-    </section>  
-    <section id="contact" class="section">  
-      <div class="container">  
-        <div class="section-heading">  
-          <div class="section-label-wrap">  
-            <p class="section-label">Contact</p>  
-            <div class="section-rule" aria-hidden="true"></div>  
-          </div>  
-        </div>  
-        <div class="contact-panel">  
-          <h2>Open to cybersecurity, GRC, and IT operations roles.</h2>  
-          <p>Based in Pretoria, South Africa. Available for remote opportunities globally and on-site roles in Gauteng.</p>  
-          <div class="button-row">  
-            <a class="btn btn-primary" href="mailto:katlegoayrton@gmail.com">Send an Email</a>  
-            <a class="btn btn-outline" href="https://www.linkedin.com/in/katlego-matlabe-12157715b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>  
-            <a class="btn btn-outline" href="https://github.com/RreMatlabe" target="_blank" rel="noopener noreferrer">GitHub</a>  
-          </div>  
-        </div>  
-      </div>  
-    </section>  
-  </main>  
-  <footer class="footer">  
-    <div class="container footer-content">  
-      <p>Katlego Matlabe · Pretoria, ZA</p>  
-      <p>Cybersecurity · GRC · IT Operations</p>  
-    </div>  
-  </footer>  
-</body>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Katlego Matlabe — SOC/GRC practitioner and founder of Kat Web Hub, a Pretoria web studio. This page is built in-studio using Kat Web Hub's own jade and gold identity." />
+<title>Katlego Matlabe — Security, Governance &amp; Web Craft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1512; --ink-soft:#0F211C; --panel:#122A24;
+    --jade:#1D5C4D; --jade-dim:#20443B;
+    --gold:#C9982F; --gold-bright:#E8BE5C;
+    --paper:#F3F1E9; --text:#E7E6DE; --text-dim:#9FAEA6;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Work Sans",Arial,sans-serif;background:var(--ink);color:var(--text);line-height:1.65;
+    padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  h1,h2,h3,.mark{font-family:"Fraunces",Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  .wrap{width:min(100% - 44px,var(--max));margin:0 auto}
+  header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,21,18,0.9);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--jade-dim)}
+  .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .mark{font-weight:700;font-size:1.2rem;color:var(--paper);letter-spacing:-0.02em}
+  .mark span{color:var(--gold)}
+  .navlinks{display:flex;gap:26px;list-style:none;font-size:0.92rem;font-weight:500;color:var(--text-dim)}
+  .navlinks a:hover{color:var(--gold-bright)}
+  section{scroll-margin-top:88px;padding:80px 0;border-bottom:1px solid var(--jade-dim)}
+  section.soft{background:var(--ink-soft)}
+  .label{color:var(--gold);font-weight:600;font-size:0.9rem;margin-bottom:26px;display:flex;align-items:center;gap:10px}
+  .label::after{content:"";flex:1;height:1px;background:var(--jade-dim)}
+  .hero{padding:110px 0 70px}
+  .hero h1{font-size:clamp(2.4rem,5.6vw,4.1rem);line-height:1.05;letter-spacing:-0.02em;color:var(--paper);max-width:820px;margin-bottom:22px;font-weight:600}
+  .hero .lede{max-width:600px;font-size:1.12rem;color:var(--text-dim);margin-bottom:40px}
+  .stat-strip{display:flex;flex-wrap:wrap;gap:0}
+  .stat{padding:0 32px 0 0;margin-right:32px;border-right:1px solid var(--jade-dim)}
+  .stat:last-child{border-right:none}
+  .stat b{display:block;font-family:"Fraunces",serif;font-size:1.9rem;color:var(--gold-bright);font-weight:600}
+  .stat span{font-size:0.86rem;color:var(--text-dim)}
+  .btnrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+  .btn{display:inline-flex;align-items:center;min-height:46px;padding:0 24px;font-weight:600;font-size:0.94rem;border-radius:3px;transition:background 160ms,color 160ms,border-color 160ms}
+  .btn-fill{background:var(--gold);color:var(--ink)}
+  .btn-fill:hover{background:var(--gold-bright)}
+  .btn-line{border:1px solid var(--jade);color:var(--paper)}
+  .btn-line:hover{border-color:var(--gold)}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
+  .about p{max-width:60ch;margin-bottom:18px;color:var(--text)}
+  .vitals{border-top:1px solid var(--jade-dim)}
+  .vital{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--jade-dim)}
+  .vital dt{color:var(--text-dim);font-size:0.88rem}
+  .vital dd{color:var(--paper);font-weight:600;text-align:right}
+  .vital dd a:hover{color:var(--gold-bright)}
+  .specialty{display:flex;gap:28px;padding:26px 0;border-bottom:1px solid var(--jade-dim);border-left:2px solid var(--gold);padding-left:24px}
+  .specialty:first-of-type{border-top:none}
+  .specialty h3{font-size:1.2rem;color:var(--paper);margin-bottom:8px;font-weight:600}
+  .specialty p{color:var(--text-dim);max-width:52ch;margin-bottom:12px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{font-size:0.78rem;padding:5px 11px;border:1px solid var(--jade);color:var(--text-dim);border-radius:3px}
+  .venture-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .venture{background:var(--panel);border:1px solid var(--jade-dim);border-top:2px solid var(--gold);padding:30px}
+  .venture h3{color:var(--paper);font-size:1.3rem;margin-bottom:12px;font-weight:600}
+  .venture p{color:var(--text-dim);margin-bottom:16px}
+  .swatch{display:flex;gap:6px;margin-bottom:16px}
+  .swatch i{width:16px;height:16px;border-radius:50%;display:block}
+  .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .proj{background:var(--panel);border:1px solid var(--jade-dim);border-top:2px solid var(--gold);padding:28px;display:flex;flex-direction:column}
+  .proj-top{display:flex;justify-content:space-between;gap:14px;margin-bottom:10px}
+  .proj h3{color:var(--paper);font-size:1.08rem;line-height:1.3;font-weight:600}
+  .proj p{color:var(--text-dim);margin-bottom:18px;flex:1}
+  .gh{width:36px;height:36px;flex:0 0 auto;border:1px solid var(--jade-dim);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--gold)}
+  .gh:hover{border-color:var(--gold)}
+  .cred-list{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .cred{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--jade-dim)}
+  .cred h3{color:var(--paper);font-size:0.98rem;font-weight:600;margin-bottom:4px}
+  .cred p{color:var(--text-dim);font-size:0.86rem}
+  .cred .status{color:var(--gold);font-size:0.8rem;white-space:nowrap;text-align:right}
+  .contact-panel{background:var(--panel);border:1px solid var(--jade-dim);border-top:2px solid var(--gold);padding:clamp(30px,5vw,56px)}
+  .contact-panel h2{font-size:clamp(1.8rem,3.6vw,2.7rem);color:var(--paper);margin-bottom:16px;font-weight:600}
+  .contact-panel p{color:var(--text-dim);max-width:56ch;margin-bottom:28px}
+  footer{padding:26px 0}
+  .foot-row{display:flex;justify-content:space-between;gap:16px;color:var(--text-dim);font-size:0.86rem;flex-wrap:wrap}
+  @media (max-width:820px){
+    .about-grid,.venture-grid,.portfolio-grid,.cred-list{grid-template-columns:1fr}
+    .navlinks{gap:14px;font-size:0.85rem}
+    .stat{margin-right:20px;padding-right:20px}
+  }
+  @media (max-width:520px){
+    section{padding:60px 0}
+    .hero{padding:80px 0 50px}
+    .btn{width:100%;justify-content:center}
+    .btnrow{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="mark">KM<span>.</span></a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#what-i-do">Focus</a></li>
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Governance instinct, applied to security and to the web.</h1>
+      <p class="lede">I'm Katlego Matlabe — working toward SOC Analyst and GRC roles out of Pretoria, and running Kat Web Hub, a small studio that builds and ships real sites for real SME clients. This page is built the way Kat Web Hub builds: in-house, on our own jade-and-gold system, not a template.</p>
+      <div class="stat-strip">
+        <div class="stat"><b>7/7</b><span>KC7 Security Analyst I modules</span></div>
+        <div class="stat"><b>2</b><span>Live Kat Web Hub client builds</span></div>
+        <div class="stat"><b>6</b><span>GRC &amp; security case studies published</span></div>
+      </div>
+      <div class="btnrow">
+        <a href="#portfolio" class="btn btn-fill">See the work</a>
+        <a href="#contact" class="btn btn-line">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about">
+        <p class="label">About</p>
+        <p>Five years supporting 6,054 international clients across 12,703 sessions taught me how to hold accountability at volume and explain complex things simply. That instinct is now aimed at security: a self-directed SOC lab, a completed KC7 Security Analyst I path, and a GRC portfolio built on real frameworks, not just study notes.</p>
+        <p>My governance degree isn't a detour from technical work — it's why I ask what a control is actually protecting before I implement it. That same discipline runs through Kat Web Hub, where I own every client build end to end: DNS, hosting, compliance, and the parts most freelancers skip.</p>
+      </div>
+      <dl class="vitals">
+        <div class="vital"><dt>Background</dt><dd>BA Governance &amp; Political Transformation</dd></div>
+        <div class="vital"><dt>Current focus</dt><dd>SOC lab complete · KC7 badge earned · GRC portfolio</dd></div>
+        <div class="vital"><dt>GitHub</dt><dd><a href="https://github.com/RreMatlabe" target="_blank" rel="noopener noreferrer">github.com/RreMatlabe</a></dd></div>
+        <div class="vital"><dt>Location</dt><dd>Pretoria, South Africa · remote-open</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="what-i-do" class="soft">
+    <div class="wrap">
+      <p class="label">Where I focus</p>
+      <div class="specialty">
+        <div>
+          <h3>Security operations</h3>
+          <p>Log analysis, endpoint monitoring, and threat detection — built through hands-on lab work, not just theory.</p>
+          <div class="tags"><span class="tag">Sysmon</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">KQL</span><span class="tag">VirusTotal</span></div>
+        </div>
+      </div>
+      <div class="specialty">
+        <div>
+          <h3>GRC &amp; governance</h3>
+          <p>Risk framework application, compliance analysis, and policy writing grounded in real governance training.</p>
+          <div class="tags"><span class="tag">NIST CSF 2.0</span><span class="tag">CIA Triad</span><span class="tag">Risk registers</span><span class="tag">Policy writing</span></div>
+        </div>
+      </div>
+      <div class="specialty">
+        <div>
+          <h3>Web &amp; cloud infrastructure</h3>
+          <p>End-to-end client delivery through Kat Web Hub — DNS, hosting, and cloud fundamentals via Azure.</p>
+          <div class="tags"><span class="tag">Azure AZ-900</span><span class="tag">Netlify</span><span class="tag">DNS &amp; email</span><span class="tag">POPIA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ventures">
+    <div class="wrap">
+      <p class="label">Ventures</p>
+      <div class="venture-grid">
+        <article class="venture">
+          <div class="swatch"><i style="background:#1D5C4D"></i><i style="background:#0A1512"></i><i style="background:#C9982F"></i></div>
+          <h3>Kat Web Hub</h3>
+          <p>Boutique web design and development studio for South African SMEs. This page is built on the same jade-and-gold system, Netlify deployment pipeline, and POPIA-first approach used for paying clients like Seate &amp; Co and BT Leadership &amp; Compliance Consultants.</p>
+          <div class="tags"><span class="tag">Client delivery</span><span class="tag">DNS &amp; hosting</span><span class="tag">POPIA compliance</span></div>
+        </article>
+        <article class="venture">
+          <div class="swatch"><i style="background:#C9982F"></i><i style="background:#1D5C4D"></i><i style="background:#E8BE5C"></i></div>
+          <h3>Decolonized Learning Lens</h3>
+          <p>A critical ESL education platform. Original curriculum built from first principles, including six independently published interactive learning games.</p>
+          <div class="tags"><span class="tag">Curriculum design</span><span class="tag">Instructional content</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="soft">
+    <div class="wrap">
+      <p class="label">Portfolio</p>
+      <div class="portfolio-grid">
+        <article class="proj">
+          <div class="proj-top"><h3>JoJo's Hospital: Ransomware Investigation</h3>
+            <a class="gh" href="https://github.com/RreMatlabe" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>
+          </div>
+          <p>Closing module of KC7's Security Analyst I path — traced an Initial Access Broker into a Ransomware-as-a-Service operation. Got properly stuck isolating the right KQL query near the end; that struggle taught more than any earlier module.</p>
+          <div class="tags"><span class="tag">KQL</span><span class="tag">RaaS</span><span class="tag">Log investigation</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>CISA KEV Daily Monitor</h3>
+            <a class="gh" href="https://github.com/RreMatlabe/Windows11-Analyst-Lab" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>
+          </div>
+          <p>Automated n8n workflow monitoring CISA's Known Exploited Vulnerabilities feed with daily alerting. Aligned to NIST CSF 2.0 and CISA BOD 22-01.</p>
+          <div class="tags"><span class="tag">n8n</span><span class="tag">NIST CSF 2.0</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Windows 11 Analyst Lab</h3>
+            <a class="gh" href="https://github.com/RreMatlabe/Windows11-Analyst-Lab" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>
+          </div>
+          <p>30-day, self-directed SOC analyst challenge with daily session logs on GitHub — Sysmon event analysis, hash verification, MITRE ATT&amp;CK tagging, and a SQLite IOC database.</p>
+          <div class="tags"><span class="tag">Sysmon</span><span class="tag">SQLite IOC DB</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>AI Governance Case Study</h3>
+            <a class="gh" href="https://github.com/RreMatlabe/AI-Governance-Case-Study" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>
+          </div>
+          <p>A governance framework for autonomous agent ecosystems — consensus hallucination, synthetic media fraud, and a 6-item risk register mapped to NIST SP 800-53.</p>
+          <div class="tags"><span class="tag">NIST SP 800-53</span><span class="tag">Risk register</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Exploiting the Human Firewall</h3>
+            <a class="gh" href="https://github.com/RreMatlabe/Case-Study-Exploiting-the-Human-Firewall" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>
+          </div>
+          <p>Behavioral analysis of a real financial fraud operation, framed as a supply chain attack running on familial trust rather than a technical exploit.</p>
+          <div class="tags"><span class="tag">Insider threat</span><span class="tag">Zero trust</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Commodification of SA's Immigration System</h3>
+            <a class="gh" href="https://github.com/RreMatlabe/Case-Study-The-Commodification-of-South-Africa-s-Immigration-System" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/></svg></a>
+          </div>
+          <p>Forensic GRC analysis of institutional corruption at the SA Department of Home Affairs, mapped to the CIA Triad and NIST CSF.</p>
+          <div class="tags"><span class="tag">GRC</span><span class="tag">CIA Triad</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap">
+      <p class="label">Credentials</p>
+      <div class="cred-list">
+        <div class="cred"><div><h3>SC-200</h3><p>Microsoft Security Operations Analyst Associate</p></div><span class="status">Certified</span></div>
+        <div class="cred"><div><h3>KC7 Security Analyst I</h3><p>7/7 modules, badge earned</p></div><span class="status">Sept 2026</span></div>
+        <div class="cred"><div><h3>AZ-900</h3><p>Microsoft Azure Fundamentals</p></div><span class="status">Certified</span></div>
+        <div class="cred"><div><h3>NSE 1, 2 &amp; 3</h3><p>Fortinet, FortiGate 7.6</p></div><span class="status">exp. 2028</span></div>
+        <div class="cred"><div><h3>FNB Python Masterclass</h3><p>with University of Johannesburg</p></div><span class="status">Complete</span></div>
+        <div class="cred"><div><h3>AI Skills Fest 2026</h3><p>Microsoft, Credly verified</p></div><span class="status">2026</span></div>
+        <div class="cred"><div><h3>Career Essentials in Cybersecurity</h3><p>Microsoft &amp; LinkedIn Learning</p></div><span class="status">Apr 2026</span></div>
+        <div class="cred"><div><h3>Jira Service Management</h3><p>Atlassian University</p></div><span class="status">May 2026</span></div>
+        <div class="cred"><div><h3>Computer Hardware Basics</h3><p>Cisco Networking Academy</p></div><span class="status">2025</span></div>
+        <div class="cred"><div><h3>Google Cybersecurity</h3><p>Google, Coursera</p></div><span class="status">4/8 modules</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="soft" style="border-bottom:none">
+    <div class="wrap">
+      <p class="label">Contact</p>
+      <div class="contact-panel">
+        <h2>Open to SOC, GRC, and IT roles — and always happy to talk web.</h2>
+        <p>Based in Pretoria, South Africa. Available remote globally, on-site in Pretoria/Johannesburg.</p>
+        <div class="btnrow">
+          <a class="btn btn-fill" href="mailto:katlegoayrton@gmail.com">Send an email</a>
+          <a class="btn btn-line" href="https://www.linkedin.com/in/katlego-matlabe-12157715b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn-line" href="https://github.com/RreMatlabe" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Katlego Matlabe · Pretoria, ZA</span>
+    <span>Built in-studio by Kat Web Hub</span>
+  </div>
+</footer>
+</body>
 </html>
